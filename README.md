@@ -6,25 +6,25 @@ If you wish to run the proyect locally, you can run docker compose up -d, this c
 
 # Content
 
-## You can find the code of first part of the test at src/helpers/testHelper.ts
+You can find the code of first part of the test at src/helpers/testHelper.ts
 
 ### Here is the available endpoints:
 
 ### /api/test1:
 
-## Payload
+Payload
 
-{
-inputData: (){}[]
-}
+**{**
+**inputData: (){}[]**
+**}**
 
 ### /api/test2:
 
-## Payload
+Payload
 
-{
-arrData: [ [1,2,3], [4,5,6], [7,8,9] ]
-}
+**{**
+**arrData: [ [1,2,3], [4,5,6], [7,8,9] ]**
+**}**
 
 # Module Transaction:
 
@@ -38,11 +38,11 @@ Send token authorization in Headers like this:
 
 ### POST /api/transaction with payload:
 
-{
-amount: number **Required**,
-description: string, **Optional**
-currency: string **Optional**
-}
+**{
+**amount: number Required**,
+**description: string, Optional\*\*
+**currency: string Optional**
+\*\*}
 
 ### GET /api/transaction :
 
@@ -54,9 +54,9 @@ Retrieve transaction by ID specified in Params
 
 ### PATCH /api/transaction/:id with payload:
 
-{
-description: string;
-}
+**{**
+**description: string;**
+**}**
 Update transaction by specified ID
 
 ### DELETE /api/transaction/:id :
@@ -69,10 +69,10 @@ Update transaction by specified ID changing status to False
 
 ### POST /api/auth with payload:
 
-{
-email: string _Existing email_,
-password: string **Required**
-}
+**{**
+**email: string _Existing email_,**
+**password: string Required\*\***
+**}**
 
 ### POST /api/register with payload:
 
@@ -88,11 +88,11 @@ password: string **required**
 
 ### POST /api/user with payload:
 
-{
-name: string **required**
-email: string **required**
-password: string **required**
-}
+**{**
+**name: string required\*\***
+**email: string required\*\***
+**password: string required\*\***
+**}**
 This method creates a user
 
 ### GET /api/user :
@@ -105,11 +105,11 @@ Retrieve user by especified Id
 
 ### PATCH /api/user/:id with payload:
 
-{
-name: string _Optional_;
-email?: string _Optional_;
-password?: string _Optional_;
-}
+**{**
+**name: string _Optional_;**
+**email?: string _Optional_;**
+**password?: string _Optional_;**
+**}**
 Update User by specified ID
 
 ### DELETE /api/user/:id :
