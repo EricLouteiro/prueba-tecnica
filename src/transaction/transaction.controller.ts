@@ -17,20 +17,18 @@ export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
   @Post()
-  create(@Body() createTransactionDto: CreateTransactionDto) {
-    return this.transactionService.create(createTransactionDto, 'fasdfasdf');
+  create(@Body() createTransactionDto: CreateTransactionDto, @Request() req) {
+    return this.transactionService.create(createTransactionDto, req.user.id);
   }
 
   @Get()
   findAll(@Request() req) {
-    console.log(req);
-
-    return this.transactionService.findAll();
+    return this.transactionService.findAll(req.user.id);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.transactionService.findOne(+id);
+    return this.transactionService.findOne(id);
   }
 
   @Patch(':id')
@@ -38,11 +36,11 @@ export class TransactionController {
     @Param('id') id: string,
     @Body() updateTransactionDto: UpdateTransactionDto,
   ) {
-    return this.transactionService.update(+id, updateTransactionDto);
+    return this.transactionService.update(id, updateTransactionDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.transactionService.remove(+id);
+    return this.transactionService.remove(id);
   }
 }

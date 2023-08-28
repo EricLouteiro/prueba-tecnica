@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  prueba-tecnica-api:
+    container_name: prueba-tecnica
+    image: elouteiro/prueba-tecnica:latest
+    ports:
+      - 4357:3000
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+    environment:
+      - DATABASE_URL=mongodb://mongo:test1234@mongodb:27017/prueba-tecnica?authSource=admin
+      - SECRET=Jwt0k3n
+    command: ['sh', '-c', 'npx prisma db push && npm run start:prod']
+    restart: always
+    depends_on:
+      - mongodb
+
+  mongodb:
+    build: ./mongodb
+    image: local/mongodb-test
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - db-mongo-prueba-tecnica:/etc/mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: test1234
+      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_PORT: '27017'
+
+volumes:
+  db-mongo-prueba-tecnica:
