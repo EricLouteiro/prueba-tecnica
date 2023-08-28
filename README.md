@@ -1,6 +1,6 @@
 ## Backend Test developed in NestJs Framework
 
-### You could try this service at this URL [Render.com](https://prueba-tecnica-ericlouteiro.onrender.com)
+### You could try this service at this URL [ericlouteiro-test.com](https://prueba-tecnica-ericlouteiro.onrender.com)
 
 If you wish to run the proyect locally, you can run docker compose up -d, this command will retrieve the proyect image wich is in ericlouteiro/ Docker registry, or you could build it executing the command docker build -t elouteiro/prueba-tecnica:latest . and then run docker compose up -d
 
