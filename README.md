@@ -1,73 +1,117 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Backend Test developed in NestJs Framework
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### You could try this service at this URL [Render.com](https://prueba-tecnica-ericlouteiro.onrender.com)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+If you wish to run the proyect locally, you can run docker compose up -d, this command will retrieve the proyect image wich is in ericlouteiro/ Docker registry, or you could build it executing the command docker build -t elouteiro/prueba-tecnica:latest . and then run docker compose up -d
 
-## Description
+# Content
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## You can find the code of first part of the test at src/helpers/testHelper.ts
 
-## Installation
+### Here is the available endpoints:
 
-```bash
-$ npm install
-```
+### /api/test1:
 
-## Running the app
+## Payload
 
-```bash
-# development
-$ npm run start
+{
+inputData: (){}[]
+}
 
-# watch mode
-$ npm run start:dev
+### /api/test2:
 
-# production mode
-$ npm run start:prod
-```
+## Payload
 
-## Test
+{
+arrData: [ [1,2,3], [4,5,6], [7,8,9] ]
+}
 
-```bash
-# unit tests
-$ npm run test
+# Module Transaction:
 
-# e2e tests
-$ npm run test:e2e
+You have to login whit an user and password to operate this module
 
-# test coverage
-$ npm run test:cov
-```
+Send token authorization in Headers like this:
 
-## Support
+**token: token.genetaded.afterlogin\***
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Endpoints:
 
-## Stay in touch
+### POST /api/transaction with payload:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+{
+amount: number **Required**,
+description: string, **Optional**
+currency: string **Optional**
+}
 
-## License
+### GET /api/transaction :
 
-Nest is [MIT licensed](LICENSE).
+Retrieve all active transactions for the User
+
+### GET /api/transaction/:id :
+
+Retrieve transaction by ID specified in Params
+
+### PATCH /api/transaction/:id with payload:
+
+{
+description: string;
+}
+Update transaction by specified ID
+
+### DELETE /api/transaction/:id :
+
+Update transaction by specified ID changing status to False
+
+# Module Auth
+
+## Endpoints:
+
+### POST /api/auth with payload:
+
+{
+email: string _Existing email_,
+password: string **Required**
+}
+
+### POST /api/register with payload:
+
+{
+name: string **required**
+email: string **required**
+password: string **required**
+}
+
+# Module User:
+
+## Endpoints:
+
+### POST /api/user with payload:
+
+{
+name: string **required**
+email: string **required**
+password: string **required**
+}
+This method creates a user
+
+### GET /api/user :
+
+Retrieve all active Users
+
+### GET /api/user/:id :
+
+Retrieve user by especified Id
+
+### PATCH /api/user/:id with payload:
+
+{
+name: string _Optional_;
+email?: string _Optional_;
+password?: string _Optional_;
+}
+Update User by specified ID
+
+### DELETE /api/user/:id :
+
+Update user by specified ID changing status to False
